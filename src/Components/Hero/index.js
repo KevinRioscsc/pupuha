@@ -6,6 +6,7 @@ import Spin from 'react-reveal/Spin';
 const Hero = ({totalPuPu, totalSold}) => {
     const [counter, setCounter] = useState(0)
     const [total, setTotal] = useState(0)
+    const [number, setNumber] = useState('')
     const onKeyUpValue = (event) => {
         console.log(event.code)
         if(event.code === 'Enter' && event.target.value){
@@ -14,6 +15,7 @@ const Hero = ({totalPuPu, totalSold}) => {
         }
         
     }
+    
     useEffect(() => {
         setTotal(counter * 2.50)
     }, [counter])
@@ -27,7 +29,11 @@ const Hero = ({totalPuPu, totalSold}) => {
         <div className="counter">
             <h3>Select # sold:</h3>
             <div className="btn-sold">
-                <input className='num' type='number' min={'1'} max ={'25'} defaultValue={'1'} onKeyUp={onKeyUpValue} />
+                <input className='num' onChange={(e) => setNumber(e.target.value)} type='number' min={'1'} max ={'25'} value={number} onKeyUp={onKeyUpValue} />
+                <span onClick={() =>  {
+                    setCounter(parseInt(counter) + parseInt(number))
+                    setNumber('')
+                    }}>Go!</span>
                 <h2>Or</h2>
                 <button onClick={() => setCounter(counter + 1)}>
                     <Spin spy= {counter}>

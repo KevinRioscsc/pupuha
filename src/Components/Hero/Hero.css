@@ -17,6 +17,13 @@
     outline: none;
     border: 0;
     border-bottom: 1px solid black;
+    position: relative;
+}
+span{
+    position: absolute;
+    right: 30%;
+    color: rgb(111, 111, 250);
+    cursor: pointer;
 }
 button{
     outline: none;
